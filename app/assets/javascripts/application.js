@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
+
+
+function disableButton() {
+  document.getElementById("queso").disabled=true;
+  return document.getElementById("queso").form.submit();
+}
+
+function hideLastRow() {
+  var count = document.getElementsByClassName("association container").length;
+  var last = document.getElementsByClassName("association container")[count-1];
+  last.style.display = "none";
+}
+
+  window.onload=hideLastRow;
