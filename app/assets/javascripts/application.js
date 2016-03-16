@@ -27,4 +27,17 @@ function hideLastRow() {
   last.style.display = "none";
 }
 
+function showLastRow() {
+  var count = document.getElementsByClassName("association container").length;
+  var last = document.getElementsByClassName("association container")[count-1];
+  last.style.display = 'block';
+  return false;
+}
+
+function removeRow(id) {
+  var row = document.getElementsByClassName("association container")[id];
+  row.style.display = "none"
+  // document.getElementById("count").value= 500*value;
+  return false;
+}
   window.onload=hideLastRow;
