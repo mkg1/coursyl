@@ -23,17 +23,21 @@
     <% end %>
 
     <%= f.label :active_at do %>
-      <span class="field-label">Open Date/Time</span> <%= f.text_field :active_at, required: true, value: db_datetime_string(a.active_at) %>
+      <span class="field-label">Open Date/Time</span> <%= f.text_field :active_at, required: true, value: db_datetime_string(a.active_at), class: 'datetimepicker' %>
       <span class="help-inline">e.g. "<%= Date.today %> 14:00"</span>
     <% end %>
 
+
     <%= f.label :due_at do %>
-      <span class="field-label">Due Date/Time</span> <%= f.text_field :due_at, required: true, value: db_datetime_string(a.due_at) %>
+      <span class="field-label">Due Date/Time</span> <%= f.text_field :due_at, required: true, value: db_datetime_string(a.due_at), class: 'datetimepicker' %>
       <span class="help-inline">e.g. "<%= Date.today %> 14:00"</span>
     <% end %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Save meeee", class: "btn" %>
+
+
+
+  <div class="modal-footer">
+    <%= f.submit "Save meeee", class: "btn btn-primary" %>
   </div>
 <% end %>
