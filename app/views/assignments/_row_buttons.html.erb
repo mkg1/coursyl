@@ -1,14 +1,16 @@
 <% if assignment.status(current_user).name != "Future" %>
 
-<a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-paper-plane"></i></a>
+<a href="#myModal<%="#{assignment.id}"%>" role="button" data-toggle="modal"><%='<i class="fa fa-paper-plane"></i>'.html_safe %></a>
 
-  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="myModal<%="#{assignment.id}"%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Modal header</h3>
+      <h3 id="myModalLabel">Change le date</h3>
     </div>
     <div class="modal-body">
-      <p>One fine body…</p>
+      <p>
+        <%= render partial: 'modal_form', locals: {a: assignment}%>
+      </p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
