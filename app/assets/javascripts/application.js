@@ -16,28 +16,87 @@
 //= require_tree .
 
 
-function disableButton() {
-  document.getElementById("queso").disabled=true;
-  return document.getElementById("queso").form.submit();
+
+
+function disableSubmitButton() {
+  $(event.target).prop("disabled", true);
+  $(event.target).closest("form").submit();
+}
+
+function bindSubmitClick() {
+  $("input[type=submit]").on("click", disableSubmitButton);
+}
+
+$(bindSubmitClick);
+
+
+function deleteRow() {
+  var row = $(event.target).closest(".association");
+  row.css("display", "none");
+  var checkbox = $(event.target).siblings().last();
+  checkbox.prop("checked", true);
+}
+
+
+function displayGrade(displayType) {
+  var associations = $("#associations");
+  var last_section = associations.children().last();
+  if (displayType) {
+    last_section.css("display", "block");
+  } else {
+    last_section.css("display", "none");
+  }
 }
 
 function hideLastRow() {
-  var count = document.getElementsByClassName("association container").length;
-  var last = document.getElementsByClassName("association container")[count-1];
-  last.style.display = "none";
+  displayGrade(false);
 }
 
-function showLastRow() {
-  var count = document.getElementsByClassName("association container").length;
-  var last = document.getElementsByClassName("association container")[count-1];
-  last.style.display = 'block';
-  return false;
-}
+$(hideLastRow);
 
-function removeRow(id) {
-  var row = document.getElementsByClassName("association container")[id];
-  row.style.display = "none"
-  // document.getElementById("count").value= 500*value;
-  return false;
-}
-  window.onload=hideLastRow;
+
+// function disableButton() {
+//   document.getElementById("queso").disabled=true;
+//   return document.getElementById("queso").form.submit();
+// }
+//
+// // function disableSubmitButton(button){
+// //   if ($("#associations").length>0) { //to check if any of those things are on the current page
+// //     $(button).prop("disabled", true);
+// //     $(button).closest("form").submit();
+// //   }
+// // }
+//
+// function hideLastRow() {
+//   var count = document.getElementsByClassName("association container").length;
+//   var last = document.getElementsByClassName("association container")[count-1];
+//   last.style.display = "none";
+// }
+//
+//
+// function showLastRow() {
+//   var count = document.getElementsByClassName("association container").length;
+//   var last = document.getElementsByClassName("association container")[count-1];
+//   last.style.display = 'block';
+//   return false;
+// }
+//
+// function removeRow(id) {
+//   var row = document.getElementsByClassName("association container")[id];
+//   row.style.display = "none"
+//   //e.g., to change value...
+//   // document.getElementById("count").value= 500*value;
+//   // var truthy = document.getElementsByName("course[grade_thresholds_attributes][3][_destroy]").value =
+//   return false;
+// }
+//
+// // function removeRow() {
+// //   var row = $(event.target).closest(".association");
+// //   row.css("display", "none");
+// //   // var checkbox = $(event.target).parent().children().last();
+// //   var checkbox = $(event.target).siblines().last();
+// //   checkbox.prop("checked", true);
+// //
+// // }
+//
+//   window.onload=hideLastRow;
